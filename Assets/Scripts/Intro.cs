@@ -10,7 +10,6 @@ public class Intro : MonoBehaviour
     public float delayBetweenLetters = 0.1f; 
 
     private float timer = 0f;
-    private int currentTextIndex = 0;
 
 
     void Start()
