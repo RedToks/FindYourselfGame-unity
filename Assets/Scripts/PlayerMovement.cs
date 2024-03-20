@@ -48,6 +48,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        TextAnimator.OnCanvasDestroyed -= HandleCanvasDestroyed;
+        TextAnimator.OnCanvasDestroyed -= HandleCanvasDestroyed;       
     }
 }

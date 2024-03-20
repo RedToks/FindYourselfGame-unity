@@ -4,15 +4,15 @@ using TMPro;
 
 public class Intro : MonoBehaviour
 {
-    public TextMeshProUGUI[] introTexts;  
-    public float fadeDuration = 2f;  
-    public float delayBetweenTexts = 3f; 
-    public float delayBetweenLetters = 0.1f; 
+    [SerializeField] private TextMeshProUGUI[] introTexts;
+    [SerializeField] private float fadeDuration = 2f;
+    [SerializeField] private float delayBetweenTexts = 3f;
+    [SerializeField] private float delayBetweenLetters = 0.1f; 
 
     private float timer = 0f;
 
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(FadeInTexts());
     }
