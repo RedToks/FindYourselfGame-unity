@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private Sprite[] characterSprites;
     [TextArea(3, 3)] [SerializeField] private string[] lines;
     [SerializeField] private float textSpeed = 0.05f;
+    [SerializeField] private GameObject door;
 
     private int index;
 
@@ -65,6 +66,7 @@ public class Dialogue : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            door.SetActive(false);
         }
     }
     private void SetCharacterImage(int index)
