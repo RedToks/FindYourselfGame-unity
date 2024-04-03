@@ -12596,6 +12596,10 @@ MonoBehaviour:
   - {fileID: 1912619242}
   - {fileID: 1805735663}
   - {fileID: 269805041}
+  - {fileID: 711265470}
+  - {fileID: 136454978}
+  - {fileID: 720504612}
+  - {fileID: 1417017203}
   sequence: 
   playerInput: 
   targetObject: {fileID: 1608811657}
@@ -33666,12 +33670,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Are you sure you want to end with this ending?
 
-    
 
-    Press "Y"
-    to confirm
 
-    Press "N" to cancel'
+    Press "Y" to confirm
+
+    Press
+    "N" to cancel'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
