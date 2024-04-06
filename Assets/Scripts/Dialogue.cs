@@ -14,10 +14,12 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private float textSpeed = 0.05f;
     [SerializeField] private GameObject door;
 
+    private EndGame endGameManager;
     private int index;
 
     private void Awake()
     {
+        endGameManager = FindObjectOfType<EndGame>();
         text.text = string.Empty;
     }
 
@@ -65,6 +67,11 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            if (gameObject.CompareTag("EndGameDialogue"))
+            {
+                Debug.Log("Start EndGame");
+                endGameManager.EndGameSequence(); 
+            }
             gameObject.SetActive(false);
             door.SetActive(false);
         }

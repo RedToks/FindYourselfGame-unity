@@ -5,7 +5,8 @@ public class EndingTrigger : MonoBehaviour
     [SerializeField] private Canvas confirmationCanvas;
     private KeyCode yesButton = KeyCode.Y; 
     private KeyCode noButton = KeyCode.N; 
-    [SerializeField] private Transform teleportTarget; 
+    [SerializeField] private Transform teleportTarget;
+    [SerializeField] private BoxCollider2D exitCollider;
 
     private EndingsManager endingsManager;
     private PlayerMovement playerMovement;
@@ -16,7 +17,7 @@ public class EndingTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !confirmationRequested)
+        if (collision.TryGetComponent(out PlayerMovement player) && !confirmationRequested)
         {
             confirmationRequested = true;
             Time.timeScale = 0;
@@ -26,6 +27,7 @@ public class EndingTrigger : MonoBehaviour
     }
     private void Start()
     {
+        exitCollider.enabled = false;
         playerMovement = FindObjectOfType<PlayerMovement>();
         endingsManager = FindObjectOfType<EndingsManager>();
     }
@@ -36,11 +38,13 @@ public class EndingTrigger : MonoBehaviour
             if (Input.GetKeyDown(yesButton))
             {
                 ResetConfirmation();
+                Teleport(true);
                 gameObject.SetActive(false);
+                exitCollider.enabled = true;
             }
             else if (Input.GetKeyDown(noButton))
             {
-                Teleport();
+                Teleport(false);
                 ResetConfirmation();
             }
         }
@@ -53,10 +57,11 @@ public class EndingTrigger : MonoBehaviour
         confirmationCanvas.gameObject.SetActive(false);
     }
 
-    private void Teleport()
+    private void Teleport(bool toRight)
     {
         Vector3 newPosition = playerMovement.transform.position;
-        newPosition.x -= teleportDistance; 
+        float directionMultiplier = toRight ? 1f : -1f; 
+        newPosition.x += directionMultiplier * teleportDistance; 
         teleportTarget.position = newPosition;
     }
 }
